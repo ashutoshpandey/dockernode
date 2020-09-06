@@ -1,0 +1,23 @@
+version: "3.7"
+
+# define all containers we want to use
+services:
+    db:
+        image: postgres
+        # define the credentials to be used in our web application
+        environment: 
+            POSTGRES_DB: 'employee'
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'postgres'
+            POSTGRES_HOST_AUTH_METHOD: 'trust'
+        ports:
+            - '6432:5432'
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: node-docker
+        depends_on: 
+            - db
+        ports:
+            - '3000:3000'

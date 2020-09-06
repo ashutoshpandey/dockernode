@@ -4,32 +4,33 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
+      database: process.env.db_name,
+      port: process.env.db_port,
       host: process.env.db_host,
       user: process.env.db_username,
-      password: process.env.db_password,
-      database: process.env.db
-    },
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: { directory: './data/seeds' },
+      password: process.env.db_password
+    }
   },
 
   testing: {
     client: 'pg',
-    connection: process.env.DB_URL,
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: { directory: './data/seeds' },
+    connection: {
+      database: process.env.db_name,
+      port: process.env.db_port,
+      host: process.env.db_host,
+      user: process.env.db_username,
+      password: process.env.db_password
+    }
   },
 
   production: {
     client: 'pg',
-    connection: process.env.DB_URL,
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: { directory: './data/seeds' },
+    connection: {
+      database: process.env.db_name,
+      port: process.env.db_port,
+      host: process.env.db_host,
+      user: process.env.db_username,
+      password: process.env.db_password
+    }
   },
 };
